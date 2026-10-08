@@ -1389,29 +1389,154 @@ body {
   margin-bottom: 24px;
 }
 
-.store-perks-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 30px;
-}
-
-.perk-row {
+.store-status-banner {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
   gap: 12px;
-  font-size: 0.88rem;
-  color: #fff;
+  padding: 12px 20px;
+  background: rgba(11, 26, 18, 0.7);
+  border: 1px solid rgba(72, 187, 120, 0.3);
+  border-radius: 16px;
+  margin-bottom: 28px;
 }
 
-.perk-bullet {
+.live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(72, 187, 120, 0.15);
+  border: 1px solid rgba(72, 187, 120, 0.35);
+  color: var(--color-sprout-green);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+}
+
+.live-indicator-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-sprout-green);
+  box-shadow: 0 0 10px var(--color-sprout-green);
+  animation: pulseBeacon 1.8s infinite ease-in-out;
+}
+
+.status-location-note {
+  font-size: 0.78rem;
+  color: var(--color-muted-leaf);
+}
+
+.store-amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.amenity-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  transition: var(--transition-smooth);
+}
+
+.amenity-card:hover {
+  border-color: rgba(245, 176, 65, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.amenity-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.amenity-card strong {
+  display: block;
+  font-size: 0.86rem;
+  color: #fff;
+  margin-bottom: 3px;
+}
+
+.amenity-card p {
+  font-size: 0.76rem;
+  color: var(--color-muted-leaf);
+  line-height: 1.35;
+}
+
+.store-schedule-box {
+  background: rgba(245, 176, 65, 0.06);
+  border: 1px dashed rgba(245, 176, 65, 0.3);
+  padding: 16px 20px;
+  border-radius: 16px;
+  margin-bottom: 24px;
+}
+
+.schedule-title {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 700;
   color: var(--color-sun-gold);
-  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+}
+
+.schedule-pills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.schedule-pill {
+  font-size: 0.78rem;
+  color: var(--color-sand);
+  background: rgba(14, 34, 23, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+.schedule-pill strong {
+  color: var(--color-sun-gold);
+}
+
+.store-testimonials-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.mini-quote-card {
+  padding: 14px;
+  background: rgba(0, 0, 0, 0.25);
+  border-left: 2px solid var(--color-sun-gold);
+  border-radius: 10px;
+}
+
+.mini-quote-card p {
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--color-parchment);
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.mini-quote-card span {
+  font-size: 0.7rem;
+  color: var(--color-sun-gold);
+  font-weight: 600;
 }
 
 .store-actions-row {
   display: flex;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: wrap;
 }
 
