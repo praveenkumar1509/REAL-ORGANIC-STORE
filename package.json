@@ -4,7 +4,6 @@
   "description": "Unique 3D Organic Store Website - Pendurthi, Visakhapatnam",
   "main": "server.js",
   "scripts": {
-    "build": "echo 'Static build ready'",
     "start": "node server.js",
     "dev": "node server.js"
   },
