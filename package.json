@@ -1,0 +1,20 @@
+{
+  "name": "real-organics-3d",
+  "version": "1.0.0",
+  "description": "Unique 3D Organic Store Website - Pendurthi, Visakhapatnam",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "organic-store",
+    "visakhapatnam",
+    "pendurthi",
+    "threejs",
+    "3d-website",
+    "ecommerce"
+  ],
+  "author": "Real Organics",
+  "license": "ISC"
+}

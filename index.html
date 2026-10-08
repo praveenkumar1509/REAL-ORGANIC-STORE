@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>REAL ORGANICS | Nature, Delivered to Your Door | Pendurthi, Visakhapatnam</title>
+  
+  <meta name="description" content="Immersive 3D organic store located in Pendurthi, Visakhapatnam, Andhra Pradesh. Farm to your home journey with zero-chemical wood-churned oils, heritage millets, raw Araku honey, and dawn-harvested produce." />
+  <meta name="keywords" content="organic store visakhapatnam, pendurthi organic groceries, cold pressed oil vizag, wood churned gaani oil, foxtail millets korralu, araku honey, natural farming andhra pradesh" />
+
+  <!-- Vendor Three.js & OrbitControls -->
+  <script src="vendor/three.min.js"></script>
+  <script src="vendor/OrbitControls.js"></script>
+
+  <!-- Bespoke Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Fullscreen 3D WebGL World Background Canvas -->
+  <div id="world-3d-canvas-container" aria-hidden="true"></div>
+  <div class="atmospheric-vignette" aria-hidden="true"></div>
+
+  <!-- FLOATING HUD HEADER -->
+  <header class="site-hud-header glass-panel">
+    <a href="#" class="brand-anchor" id="nav-brand">
+      <div class="brand-logo-icon">🌿</div>
+      <div class="brand-naming">
+        <h1>REAL</h1>
+        <span>Organics • Pendurthi, Vizag</span>
+      </div>
+    </a>
+
+    <nav class="hud-nav-links">
+      <a href="#stage-farm">The Farm</a>
+      <a href="#stage-harvest">The Harvest</a>
+      <a href="#stage-quality">Cold-Press Purity</a>
+      <a href="#stage-store">Pendurthi Store</a>
+      <a href="#products-section">Harvest Vault</a>
+      <a href="#traceability-section">Lab Traceability</a>
+    </nav>
+
+    <div class="hud-actions">
+      <!-- Ambient Sound Toggle -->
+      <button class="hud-pill-btn" id="sound-toggle-btn" title="Toggle Nature Audio">
+        <span class="sound-icon">🔈</span>
+        <span>Soundscape</span>
+      </button>
+
+      <!-- Cart Button -->
+      <button class="hud-pill-btn cart-toggle-btn" id="header-cart-btn">
+        <span>🧺 Farm Crate</span>
+        <span class="cart-count-badge" style="display:none;">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- FLOATING JOURNEY TIMELINE DOCK (BOTTOM HUD) -->
+  <aside class="journey-timeline-dock" aria-label="Farm to Home Timeline">
+    <div class="timeline-legend">Journey:</div>
+    <button class="stage-nav-pill active" data-step="0">1. Farm</button>
+    <button class="stage-nav-pill" data-step="1">2. Harvest</button>
+    <button class="stage-nav-pill" data-step="2">3. Cold Press</button>
+    <button class="stage-nav-pill" data-step="3">4. Pendurthi Store</button>
+    <button class="stage-nav-pill" data-step="4">5. To Your Home</button>
+  </aside>
+
+  <!-- MAIN STORY FLOW -->
+  <main class="main-content-flow">
+
+    <!-- 1. IMMERSIVE HERO SECTION -->
+    <section class="hero-spatial-section" id="hero-section">
+      <div class="hero-spatial-content">
+        <div class="hero-location-beacon">
+          <span class="pulse-dot"></span>
+          <span>Flagship Organic Sanctuary • Pendurthi, Visakhapatnam</span>
+        </div>
+
+        <h1 class="hero-store-title">REAL ORGANICS</h1>
+        <h2 class="hero-tagline">"NATURE, DELIVERED TO YOUR DOOR."</h2>
+
+        <p class="hero-support-text">
+          Pure ingredients. Honest sourcing. Healthier choices for everyday life. Experience the sacred journey from Andhra's living soil directly to your family's table.
+        </p>
+
+        <div class="hero-actions-cluster">
+          <a href="#products-section" class="btn btn-primary" id="hero-cta-shop">
+            <span>SHOP ORGANIC</span>
+            <span class="btn-arrow">→</span>
+          </a>
+          <a href="#stage-farm" class="btn btn-secondary" id="hero-cta-story">
+            <span>EXPLORE OUR STORY</span>
+            <span class="btn-symbol">🌿</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-scroll-indicator">
+        <div class="scroll-mouse-icon">
+          <div class="scroll-mouse-wheel"></div>
+        </div>
+        <span>Scroll to Travel From Farm to Home</span>
+      </div>
+    </section>
+
+    <!-- 2. BRAND PILLARS STRIP -->
+    <section class="brand-feel-strip glass-panel">
+      <div class="pillars-grid">
+        <div class="pillar-item">
+          <div class="pillar-icon">🌱</div>
+          <div class="pillar-text">
+            <h4>NATURAL</h4>
+            <p>100% Living soil produce, zero synthetic pesticides, zero toxic ripening chemicals.</p>
+          </div>
+        </div>
+
+        <div class="pillar-item">
+          <div class="pillar-icon">🛡️</div>
+          <div class="pillar-text">
+            <h4>TRUSTWORTHY</h4>
+            <p>Full batch gas chromatography reports and direct farmer identity transparency.</p>
+          </div>
+        </div>
+
+        <div class="pillar-item">
+          <div class="pillar-icon">🏺</div>
+          <div class="pillar-text">
+            <h4>PREMIUM</h4>
+            <p>Traditional Vaagai wood-churned oils and cold stone-ground native flours.</p>
+          </div>
+        </div>
+
+        <div class="pillar-item">
+          <div class="pillar-icon">📍</div>
+          <div class="pillar-text">
+            <h4>LOCAL</h4>
+            <p>Proudly rooted in Pendurthi, bridging Eastern Ghats organic farmers with Vizag homes.</p>
+          </div>
+        </div>
+
+        <div class="pillar-item">
+          <div class="pillar-icon">❤️</div>
+          <div class="pillar-text">
+            <h4>HEALTH-CONSCIOUS</h4>
+            <p>Ancient low-GI unpolished millets and raw unpasteurized wild forest honey.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. JOURNEY CHAPTERS: FROM FARM TO YOUR HOME -->
+    <div class="journey-chapters-section">
+      <div class="section-headline-box">
+        <span class="section-label">A Story-Driven 3D Exploration</span>
+        <h2 class="section-title">THE JOURNEY: FROM FARM TO YOUR HOME</h2>
+        <p class="section-subtitle">
+          Follow the pathway of uncompromised purity — from fertile red earth of Andhra's hills, hand-harvested at first light, wood-pressed in Pendurthi, to your family's doorstep.
+        </p>
+      </div>
+
+      <!-- Rendered dynamically by app.js with images, stats, and 3D camera waypoints -->
+      <div id="journey-stages-container"></div>
+    </div>
+
+    <!-- 4. 3D BOTANICAL HARVEST VAULT (PRODUCT CATALOG) -->
+    <section class="products-experience-section" id="products-section">
+      <div class="section-headline-box">
+        <span class="section-label">Interactive Produce Sanctuary</span>
+        <h2 class="section-title">THE BOTANICAL HARVEST VAULT</h2>
+        <p class="section-subtitle">
+          Click any product to inspect its 3D geometry, test purity benchmarks, view harvest coordinates, and add to your fresh box.
+        </p>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="category-filter-bar">
+        <button class="cat-filter-btn active" data-category="all">All Produce</button>
+        <button class="cat-filter-btn" data-category="oils">🫒 Cold-Pressed Oils</button>
+        <button class="cat-filter-btn" data-category="honey">🍯 Raw Wild Honey & Jaggery</button>
+        <button class="cat-filter-btn" data-category="millets">🌾 Heritage Millets & Rice</button>
+        <button class="cat-filter-btn" data-category="produce">🥭 Dawn Fresh Produce</button>
+        <button class="cat-filter-btn" data-category="spices">🌶️ Hill-Grown Spices</button>
+        <button class="cat-filter-btn" data-category="personal-care">🌿 Botanical Care</button>
+      </div>
+
+      <!-- Spatial Product Grid -->
+      <div class="products-spatial-grid" id="products-grid">
+        <!-- Injected dynamically via app.js -->
+      </div>
+    </section>
+
+    <!-- 5. INTERACTIVE "BUILD YOUR PENDURTHI CRATE" -->
+    <section class="eco-crate-builder-section" id="crate-builder-section">
+      <div class="crate-builder-card glass-panel">
+        <div class="section-headline-box" style="margin-bottom: 30px;">
+          <span class="section-label">Custom Farm-to-Door Box</span>
+          <h2 class="section-title">PACK YOUR PENDURTHI HARVEST CRATE</h2>
+          <p class="section-subtitle">
+            Curate your weekly wooden crate of seasonal fruits, unpolished grains, and fresh wood-churned oils.
+          </p>
+        </div>
+
+        <div class="crate-builder-grid">
+          <div class="crate-items-picker-container">
+            <h3>Select Fresh Arrivals</h3>
+            <p>Click items to add them directly into your physical eco-crate:</p>
+            <div class="crate-chips-grid" id="crate-item-picker">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+          <div class="crate-visual-stage">
+            <div class="crate-stage-header">
+              <h4>📦 Your Wooden Farm Crate</h4>
+              <span class="vizag-pin">Pendurthi Dispatch</span>
+            </div>
+
+            <div class="capacity-meter-box">
+              <div class="meter-track">
+                <div class="meter-fill" id="crate-weight-bar"></div>
+              </div>
+              <div class="meter-info">
+                <span id="crate-weight-text">0.0 kg / 6.0 kg Crate Capacity</span>
+                <span>Biodegradable Pack</span>
+              </div>
+            </div>
+
+            <div class="crate-items-box" id="crate-items-list">
+              <!-- Packed items displayed here -->
+            </div>
+
+            <div class="crate-bottom-bar">
+              <div class="crate-total-val">
+                <span id="crate-price-label">Crate Subtotal:</span>
+                <strong id="crate-price">₹0</strong>
+              </div>
+              <button class="btn btn-primary" id="add-crate-to-cart-btn" disabled>
+                <span>Add Crate to Order</span>
+                <span>→</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. PURITY & BATCH TRACEABILITY SCANNER -->
+    <section class="traceability-scanner-section" id="traceability-section">
+      <div class="scanner-container-card glass-panel">
+        <div class="section-headline-box" style="margin-bottom: 28px;">
+          <span class="section-label">Unadulterated Transparency</span>
+          <h2 class="section-title">BATCH PURITY & ORIGIN SCANNER</h2>
+          <p class="section-subtitle">
+            Every bottle, jar, and pouch packed at our Pendurthi store bears an authentic batch code. Enter or select a code below to view NABL lab tests and farmer verification.
+          </p>
+        </div>
+
+        <div class="scanner-input-bar">
+          <input type="text" id="batch-search-input" placeholder="Enter Batch Code (e.g. VIZ-PND-OIL-428)" value="VIZ-PND-OIL-428" />
+          <button class="btn btn-primary" id="batch-search-btn">Verify Purity</button>
+        </div>
+
+        <div class="sample-batches-pills">
+          <span>Try Sample Batches:</span>
+          <button class="batch-chip" data-batch="VIZ-PND-OIL-428">VIZ-PND-OIL-428 (Groundnut Oil)</button>
+          <button class="batch-chip" data-batch="ARK-HNY-WLD-890">ARK-HNY-WLD-890 (Araku Wild Honey)</button>
+          <button class="batch-chip" data-batch="VIZ-MLT-FOX-711">VIZ-MLT-FOX-711 (Foxtail Millet)</button>
+        </div>
+
+        <div id="batch-result-display">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. PENDURTHI FLAGSHIP STORE VISIT -->
+    <section class="store-visit-section" id="store-section">
+      <div class="store-experience-card glass-panel">
+        <div class="store-layout-grid">
+          <div class="store-photo-frame">
+            <img src="assets/pendurthi_store.jpg" alt="Real Organics Flagship Store in Pendurthi, Visakhapatnam" loading="lazy" />
+            <div class="store-badge-overlay">
+              <strong>VISIT OUR BOTANICAL STORE</strong>
+              <span>Main Road, Pendurthi Junction, Visakhapatnam</span>
+            </div>
+          </div>
+
+          <div class="store-content-details">
+            <span class="section-label">Visakhapatnam Physical Flagship</span>
+            <h3>REAL ORGANICS SANCTUARY • PENDURTHI</h3>
+            <div class="store-telugu-heading">రియల్ ఆర్గానిక్స్ - పెందుర్తి జంక్షన్</div>
+
+            <p class="store-intro-text">
+              Step into an earthy sanctuary illuminated by warm morning light, filled with the aroma of freshly cold-pressed sesame oil, heirloom grains in glass dispensers, and freshly harvested hill vegetables.
+            </p>
+
+            <div class="store-perks-list">
+              <div class="perk-row">
+                <span class="perk-bullet">🌾</span>
+                <span><strong>Zero-Waste Refill Bar:</strong> Bring your own jars for 5% off unpolished millets and gaani oils.</span>
+              </div>
+              <div class="perk-row">
+                <span class="perk-bullet">👨‍🌾</span>
+                <span><strong>Sunday Farmer Satsang:</strong> Meet local farmers from Sabbavaram & Araku every Sunday morning.</span>
+              </div>
+              <div class="perk-row">
+                <span class="perk-bullet">⏱️</span>
+                <span><strong>Store Hours:</strong> Open all 7 days from 6:30 AM to 9:30 PM.</span>
+              </div>
+            </div>
+
+            <div class="store-actions-row">
+              <a href="https://maps.google.com/?q=Pendurthi,Visakhapatnam" target="_blank" rel="noopener" class="btn btn-secondary">
+                <span>Open in Google Maps</span>
+                <span>📍</span>
+              </a>
+              <a href="https://wa.me/918912745890?text=Hi%20Real%20Organics,%20I%20would%20like%20to%20order%20from%20Pendurthi%20store" target="_blank" rel="noopener" class="btn btn-primary">
+                <span>WhatsApp Direct Order</span>
+                <span>💬</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. FOOTER -->
+    <footer class="nature-sanctuary-footer">
+      <div class="footer-top-grid">
+        <div class="footer-brand-bio">
+          <h3>REAL ORGANICS</h3>
+          <p>
+            Bridging indigenous organic farmers in the Eastern Ghats and Visakhapatnam hinterland with conscious urban households. Rooted in Pendurthi, Andhra Pradesh.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Farm Harvest</h4>
+          <ul>
+            <li><a href="#products-section">Cold-Pressed Gaani Oils</a></li>
+            <li><a href="#products-section">Heritage Andhra Millets</a></li>
+            <li><a href="#products-section">Raw Araku Rock-Bee Honey</a></li>
+            <li><a href="#products-section">Unpolished Black & Red Rice</a></li>
+            <li><a href="#products-section">Sun-Cured Guntur Chillies</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Pendurthi Store</h4>
+          <ul>
+            <li><span>📍 Main Road, Pendurthi Jn, Vizag - 531173</span></li>
+            <li><span>📞 +91 891 274 5890</span></li>
+            <li><span>📱 WhatsApp: +91 94901 88421</span></li>
+            <li><span>⏰ 6:30 AM – 9:30 PM (Daily)</span></li>
+            <li><span>🚚 Same-Day Delivery across Vizag</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <span>© 2026 Real Organics (Pendurthi, Visakhapatnam). All Rights Reserved.</span>
+        <span>Pure. Honest. Zero Chemicals. Certified Natural Soil.</span>
+      </div>
+    </footer>
+  </main>
+
+  <!-- =================================================================
+       INTERACTIVE 3D PRODUCT TURNTABLE INSPECTOR MODAL
+       ================================================================= -->
+  <div class="modal-spatial-backdrop" id="product-3d-modal" role="dialog" aria-modal="true">
+    <div class="modal-spatial-panel glass-panel">
+      <button class="modal-close-cross" id="modal-close-btn" title="Close 3D View">✕</button>
+
+      <div class="modal-turntable-grid">
+        <!-- 3D Turntable Left Column -->
+        <div class="turntable-canvas-wrapper">
+          <div id="product-3d-turntable-container">
+            <!-- Three.js OrbitControls canvas will be injected here -->
+          </div>
+
+          <div class="turntable-instructions-hint">
+            <span>🖱️ Click & Drag to Rotate 360° • Scroll to Zoom</span>
+            <button class="hud-pill-btn active" id="modal-autorotate-toggle">Auto-Rotate: ON</button>
+          </div>
+
+          <div class="turntable-controls-bar">
+            <div class="lighting-presets-group">
+              <span>Lighting:</span>
+              <button class="light-preset-btn active" data-preset="dawn">Dawn Sun</button>
+              <button class="light-preset-btn" data-preset="lab">Lab Light</button>
+              <button class="light-preset-btn" data-preset="cellar">Wood Cellar</button>
+            </div>
+            <div class="purity-verified-stamp">
+              <span>🛡️ 100% Authentic Geometry</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Intel Right Column -->
+        <div class="modal-product-intel">
+          <span class="modal-category-tag" id="modal-product-category">Cold-Pressed Oils</span>
+          <h2 id="modal-product-title">Wood-Churned Groundnut Oil</h2>
+          <div class="modal-telugu-name" id="modal-product-telugu">గానుగ వేరుశెనగ నూనె</div>
+
+          <div class="modal-price-row">
+            <span class="modal-price-val" id="modal-product-price">₹340</span>
+            <span class="modal-unit-val" id="modal-product-unit">1 Litre Glass Bottle</span>
+          </div>
+
+          <p class="modal-desc-p" id="modal-product-desc">
+            Crushed in native Vaagai wood pestle at low temperature to protect natural vitamin E and polyphenols.
+          </p>
+
+          <div class="modal-purity-hud">
+            <div class="hud-tile">
+              <span>Pesticide Residue</span>
+              <strong id="modal-purity-pesticide" class="text-green">0.00% Not Detected</strong>
+            </div>
+            <div class="hud-tile">
+              <span>Extraction Temp</span>
+              <strong id="modal-purity-temp">31.4°C (Cold Raw)</strong>
+            </div>
+            <div class="hud-tile">
+              <span>Chemicals</span>
+              <strong id="modal-purity-chemicals">Zero Synthetics</strong>
+            </div>
+            <div class="hud-tile">
+              <span>Nutrient Density</span>
+              <strong id="modal-purity-poly">High Polyphenols</strong>
+            </div>
+          </div>
+
+          <div class="modal-provenance-box">
+            <div class="provenance-line">
+              <span>Farmer / Collective:</span>
+              <strong id="modal-product-farmer">Appala Naidu</strong>
+            </div>
+            <div class="provenance-line">
+              <span>Farm Origin:</span>
+              <strong id="modal-product-origin">Pendurthi Agro-Cluster, Visakhapatnam</strong>
+            </div>
+            <div class="provenance-line">
+              <span>GPS Coordinates:</span>
+              <strong id="modal-product-coords">17.8312° N, 83.2014° E</strong>
+            </div>
+            <div class="provenance-line">
+              <span>Batch Identifier:</span>
+              <strong id="modal-product-batch">VIZ-PND-OIL-428</strong>
+            </div>
+            <div class="provenance-line">
+              <span>Harvest Timing:</span>
+              <strong id="modal-product-harvest">October 2026</strong>
+            </div>
+          </div>
+
+          <ul class="modal-health-list" id="modal-health-benefits">
+            <!-- Populated via script -->
+          </ul>
+
+          <button class="btn btn-primary" id="modal-add-to-cart-btn" style="width: 100%; justify-content: center;">
+            <span>Add to Farm Box</span>
+            <span>+</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =================================================================
+       SLIDE-OVER ECO CART DRAWER
+       ================================================================= -->
+  <div class="cart-drawer-overlay" id="cart-overlay"></div>
+  <aside class="eco-cart-drawer" id="cart-drawer">
+    <div class="cart-drawer-header">
+      <h3>🧺 Your Farm Crate</h3>
+      <button class="cart-close-btn" id="cart-close-btn" title="Close Cart">✕</button>
+    </div>
+
+    <div class="cart-items-scroll-area" id="cart-items-list">
+      <!-- Injected dynamically -->
+    </div>
+
+    <div class="cart-drawer-footer">
+      <div class="cart-summary-line">
+        <span>Crate Subtotal:</span>
+        <span id="cart-subtotal">₹0</span>
+      </div>
+      <div class="cart-summary-line">
+        <span>Vizag Local Delivery:</span>
+        <span class="text-green">FREE (Same-Day)</span>
+      </div>
+      <div class="cart-summary-line total-line">
+        <span>Total Payable:</span>
+        <span id="cart-total" class="text-green">₹0</span>
+      </div>
+
+      <div class="vizag-local-delivery-banner">
+        🌿 Dispatched from Pendurthi Store to all Visakhapatnam localities
+      </div>
+
+      <button class="btn btn-primary" id="cart-checkout-btn" style="width: 100%; justify-content: center;">
+        <span>Proceed to Secure Checkout</span>
+        <span>→</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- =================================================================
+       CHECKOUT MODAL
+       ================================================================= -->
+  <div class="modal-spatial-backdrop" id="checkout-modal" role="dialog" aria-modal="true">
+    <div class="modal-spatial-panel glass-panel" style="max-width: 620px;">
+      <button class="modal-close-cross" id="checkout-close-btn">✕</button>
+
+      <span class="section-label">Fresh Delivery Booking</span>
+      <h2 style="font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 4px;">DISPATCH YOUR HARVEST</h2>
+      <p style="font-size: 0.88rem; color: var(--color-muted-leaf);">Dispatched in plastic-free earthen crates across Visakhapatnam.</p>
+
+      <form id="checkout-form" class="checkout-form-box">
+        <div class="form-group-cluster">
+          <label for="cust-name">Full Name</label>
+          <input type="text" id="cust-name" required placeholder="e.g. Sravani Rao" value="Sravani Rao" />
+        </div>
+
+        <div class="form-row-duo">
+          <div class="form-group-cluster">
+            <label for="cust-phone">WhatsApp / Mobile</label>
+            <input type="tel" id="cust-phone" required placeholder="+91 98480 12345" value="+91 98480 12345" />
+          </div>
+          <div class="form-group-cluster">
+            <label for="cust-locality">Visakhapatnam Locality</label>
+            <select id="cust-locality" required>
+              <option value="Pendurthi (Store Local)">Pendurthi (Store Local - 30 min delivery)</option>
+              <option value="MVP Colony">MVP Colony & Sector 1-12</option>
+              <option value="Seethammadhara">Seethammadhara / HB Colony</option>
+              <option value="Madhurawada & PM Palem">Madhurawada & PM Palem</option>
+              <option value="Gajuwaka & Steel Plant">Gajuwaka & Steel Plant Township</option>
+              <option value="Rushikonda / IT SEZ">Rushikonda / Sagar Nagar</option>
+              <option value="Siripuram & Waltair">Siripuram & Waltair Uplands</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group-cluster">
+          <label for="cust-address">Street Address / Landmark</label>
+          <input type="text" id="cust-address" required placeholder="House No, Apartment, Landmark" value="Plot 42, Green Meadows, Pendurthi" />
+        </div>
+
+        <div class="form-row-duo">
+          <div class="form-group-cluster">
+            <label for="cust-slot">Preferred Delivery Slot</label>
+            <select id="cust-slot">
+              <option value="Dawn Slot (6:30 AM - 9:00 AM)">Dawn Slot (6:30 AM - 9:00 AM)</option>
+              <option value="Noon Slot (11:30 AM - 1:30 PM)">Noon Slot (11:30 AM - 1:30 PM)</option>
+              <option value="Evening Slot (5:00 PM - 7:30 PM)">Evening Slot (5:00 PM - 7:30 PM)</option>
+            </select>
+          </div>
+          <div class="form-group-cluster">
+            <label for="cust-pay">Payment Option</label>
+            <select id="cust-pay">
+              <option value="UPI (Google Pay / PhonePe / QR)">UPI (Google Pay / PhonePe / QR)</option>
+              <option value="Cash on Delivery (Zero Contact)">Cash on Delivery</option>
+              <option value="Cards & NetBanking">Credit / Debit Card</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1);">
+          <span style="color: var(--color-muted-leaf); font-size: 0.88rem;">Total: <strong id="checkout-modal-subtotal" style="color: #fff; font-size: 1.2rem;">₹0</strong></span>
+          <button type="submit" class="btn btn-primary">
+            <span>Confirm & Place Order</span>
+            <span>✓</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =================================================================
+       ORDER SUCCESS CONFIRMATION MODAL
+       ================================================================= -->
+  <div class="modal-spatial-backdrop" id="order-success-modal" role="dialog" aria-modal="true">
+    <div class="modal-spatial-panel glass-panel" style="max-width: 580px;">
+      <div class="order-success-content">
+        <div class="success-sprout-badge">🌱</div>
+        <h2>HARVEST BOX CONFIRMED!</h2>
+        <div class="order-id-highlight">Order ID: <span id="success-order-id">PND-892401</span></div>
+
+        <p style="color: var(--color-parchment); font-size: 0.92rem; margin-bottom: 24px;">
+          Thank you, <strong id="success-customer-name">Sravani</strong>! Your basket of chemical-free goodness is being hand-packed at our Pendurthi store.
+        </p>
+
+        <div class="delivery-summary-box">
+          <p>📍 <strong>Delivery Locality:</strong> <span id="success-locality">Pendurthi</span></p>
+          <p>⏰ <strong>Scheduled Window:</strong> <span id="success-slot">Dawn Slot (6:30 AM - 9:00 AM)</span></p>
+          <p>🌿 <strong>Farmer Collective Note:</strong> Directly supporting 42 smallholder farming families in Visakhapatnam district.</p>
+          <p>📱 <strong>SMS & WhatsApp Updates:</strong> Live GPS tracking link sent to your phone.</p>
+        </div>
+
+        <button class="btn btn-primary" id="order-success-close-btn" style="margin: 0 auto;">
+          <span>Back to Nature Exploration</span>
+          <span>🌿</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- APPLICATION SCRIPTS -->
+  <script src="js/products-data.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/three-world.js"></script>
+  <script src="js/product-3d-viewer.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
